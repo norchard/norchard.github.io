@@ -1,0 +1,82 @@
+---
+---
+
+<div class="container">
+    <h4>Writing</h4>
+    <section class="module post">
+        <a href="./blog/compilers">
+            <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
+            </svg>
+            <h3>An Intro to Compilers</h3>
+            <p>Read my Hacker News #1 featured blog post on compiler basics</p>
+        </a>
+    </section>
+    <section class="module post">
+        <a href="./blog/package-managers">
+            <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
+            </svg>
+            <h3>Package Managers</h3>
+        </a>
+    </section>
+</div>
+
+<style>
+    .post {
+        padding: 20px;
+        transition: transform .4s ease-in-out;
+        margin-bottom: 20px;
+    }
+    .post a {
+		display: flex;
+        /* vertical-align: end; */
+        align-items: end;
+
+        /* padding: 10px; */
+	}
+
+	.post svg {
+        margin-left: 20px;
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+    .post:has(a:hover) {
+        transform: scale(1.01);
+        box-shadow: 0px 3px 20px var(--module-shadow);
+        transition: transform .4s ease-in-out,  box-shadow .4s ease-in-out;
+        /* background-color: black !important;
+        background-image: none; */
+        /* color: var(--accent); */
+    }
+
+    /* .post:has(a:hover) > a > svg {
+        transform: rotate(360deg);
+        transition: transform .8s ease-in-out;
+
+    } */
+
+	.post h3 {
+		/* color: inherit; */
+		font-size: 32px;
+		line-height: 32px;
+		margin: 0px 20px;
+	}
+
+    .post p {
+        margin-bottom: 0px;
+        color: var(--accent);
+    }
+
+    @media (max-width: 1050px) {
+        .post h3 {
+            font-size: 24px;
+        }
+    }
+    @media (max-width: 900px) {
+        .post p {
+            display: none;
+        }
+    }
+</style>

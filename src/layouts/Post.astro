@@ -1,0 +1,56 @@
+---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+    <div class='container post'>
+        <h1>{ frontmatter.title }</h1>
+        <h2>{ frontmatter.description }</h2>
+        <slot />
+    </div>
+ </Layout>
+
+ <style>
+    .post.container {
+        max-width: 650px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .post.container > h1 {
+        font-size: 52px;
+    }
+    img {
+        width: 650px !important;
+    }
+    pre {
+        padding: 10px;
+    }
+    .post a {
+        color: inherit;
+        position: relative;
+        text-decoration: none;
+
+        &::after {
+            background-color: currentColor;
+            bottom: -2px;
+            content: '';
+            height: 5%;
+            position: absolute;
+            right: 0;
+            width: 100%;
+        }
+
+        &:hover {
+            color: var(--accent);
+            &::after {
+                background-color: var(--accent);
+            }
+        }
+    }
+
+    pre.astro-code {
+        background-color: var(--accent) !important;
+    }
+ </style>

@@ -3,12 +3,14 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/prism": "^3.3.0",
     "astro": "^5.16.6"
   }
 }

@@ -1,0 +1,245 @@
+---
+import nicoleImage from '../assets/nicole-orchard.jpg';
+import arrowGraphic from '../assets/arrow.png';
+import workSection from '../assets/work-section.jpg';
+import seventhInningSketch from '../assets/seventh-inning-sketch.png';
+import roadTripDogs from '../assets/road-trip-dogs.png';
+---
+
+<div id="container white-background">
+    <div id="work">
+        <div class="content-container flex">
+            <div id="about-text" class="column">
+                <h2 class="pill blue-text blue-background">Work</h2>
+            </div>
+        </div>
+        <div class="content-container flex">
+            <div class="column work-text">
+                <h3 class="green-text">Seventh Inning Sketch</h2>
+                <p>
+                    This is an interactive email which utilizes checkboxes and label background image replacement to create a Where’s Waldo searching game inside of the email client. The email became very heavy with the illustration grid size, so I had to get creative with optimizing the grid for fewest divisions while maintaining granularity in the interactive sections.
+                </p>
+                <a class="button work-button">View Email <span class="arrow">→</span></a>
+            </div>
+            <div class="column work-image">
+                <img id="seventh-inning-image" src={seventhInningSketch.src} alt="image of Seventh Inning Sketch email design" fetchpriority="high" />
+            </div>
+        </div>
+        <div class="content-container flex">
+            <div class="column work-image">
+                <img id="road-trip-dogs-image" src={roadTripDogs.src} alt="image of Road Trip Dogs email design" fetchpriority="high" />
+            </div>
+            <div class="column work-text">
+                <h3 class="green-text">Inner Monologue of Road Trip Dogs</h2>
+                <p>
+                    This email is also interactive using the checkbox image swap method to create a quiz which returns your dog's roadtrip personality. I built an MJML&#8209;based* templating tool to create three versions of this email. My tool uses a combination of handlebars to dynamically pull in versioned content and chained npm scripts to build all versions simultaneously (and minifying the HTML output!)
+                </p>
+                <a class="button work-button">View Email <span class="arrow">→</span></a>
+                <p>
+                    *I contributed 
+                   <a href="https://github.com/mjmlio/mjml/pull/2922" target="_blank" class="link">
+                        <span class="link__text-static">a bug fix</span>
+                        <span class="link__text-dynamic">
+                            <span class="link__text-dynamic-inner">a bug fix</span>
+                        </span>
+                    </a>
+                    to the MJML codebase which was released in a new version, Sept 2025.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #work-section {
+        padding-top: 50px;
+    }
+    .work-image {
+       text-align: center;
+    }
+
+    #blog-post {
+        display: flex;
+        width: 620px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: #ffffff;
+    }
+    #blog-post img {
+        float: left;
+        object-fit: cover; 
+        padding-right: 20px;
+    }
+    #blog-post p {
+        padding-right: 20px;
+    }
+    #container {
+        background-color: #F3F3F3;
+        padding: 0px 0px 50px 0px;
+    }
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    #intro {
+        background-color: #D2E3FA;
+        padding: 40px 0px 10px 0px;
+    }
+    #description {
+        max-width: 400px;
+    }
+    .flex {
+        display: flex;
+        gap: 60px;
+        justify-content: space-between;
+    }
+    .location {
+        position: relative;
+        top: -75px;
+        float: right;
+        clear: both;
+        margin: 0px 20px -5px 0px !important;
+        letter-spacing: .15rem !important;
+    }
+    .loc-top {
+        border-radius: 20px 20px 0px 20px !important;
+    }
+    .loc-bottom {
+        border-radius: 0px 0px 15px 15px !important;
+    }
+    .pill {
+        font-family: 'Folsom', sans-serif;
+        letter-spacing: 0.3rem;
+        font-size: 12px;
+        padding: 8px 13px 8px 15px;
+        border-radius: 20px;
+        width: fit-content;
+        text-align: center;
+        margin-left: -5px;
+        margin-bottom: 40px;
+        margin-top: 30px;
+    }
+    .column {
+        flex: 1 !important;
+    }
+
+    .work-text {
+        /* max-width: 480px; */
+        /* padding: 40px; */
+    }
+
+    .button {
+        display: block;
+        background-color: #2A2A2A;
+        color: #e9e9e9;
+        text-transform: uppercase;
+        border-bottom: none;
+        padding: 10px 20px;
+        width: fit-content;
+        margin-top: 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        letter-spacing: .05rem;
+        transition: all 0.2s ease-out;
+        margin-bottom: 40px;
+    }
+    
+    .button:hover {
+        /* color: #72972A; */
+        background-color: var(--orange);
+        cursor: pointer;
+    }
+
+    .button .arrow {
+        padding-right: 8px;
+    }
+
+    @keyframes bounce {
+        0% {
+            left: 0;
+        }
+        50% {
+            left: 7%;
+        }
+        100% {
+            left: 0;    
+        }
+    }
+
+    .work-button:hover .arrow {
+        position: relative;
+        animation: linear infinite;
+        animation-name: bounce;
+        animation-duration: 2s;
+    }
+
+    #portrait-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #portrait {
+        margin-top: -300px !important;
+        border-radius: 15px;
+        object-fit: contain;
+        float: right;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    #title {
+        letter-spacing: -0.05rem;
+        font-size: 45px;
+        line-height: 10px;
+    }
+    .bold {
+        font-weight: 900;
+    }
+    @media screen and (max-width: 600px) {
+        .flex {
+            flex-direction: column-reverse;
+        }
+        #intro {
+            padding-top: 0px;
+        }
+        #title {
+            font-size: 32px;
+        }
+        #about-image {
+            /* align-items: center !important; */
+            width: 100%;
+            justify-content: center;
+            margin: 0 auto !important;
+        }
+        #portrait-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        #portrait {
+            margin: -80px auto 0px auto !important;
+            width: 110%;
+            float: none !important;
+            display: block; 
+        }
+        .content-container {
+            gap: 0px;
+        }
+        p, a {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .pill {
+            font-size: 10px;
+            margin-bottom: 25px;
+        }
+        #blog-post {
+            width: 90%;
+        }
+        #blog-post p, #blog-post a {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+</style>

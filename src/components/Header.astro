@@ -1,0 +1,125 @@
+---
+import nicoleImage from '../assets/nicole-headshot-square.jpg';
+import ContactDetails from './ContactDetails.astro';
+---
+
+<section class="container">
+    <div id="grid-header">
+        <img id="portrait" class="col-1" src={nicoleImage.src} alt="Nicole Orchard headshot" fetchpriority="high" />
+        <div id="greeting" class="col-2">
+            <div>
+                <h2>Hi, I'm Nicole&nbsp;<span>👋</span></h2>
+                <h3>Designer turned Software&nbsp;Engineer</h3>
+            </div>
+        </div>
+        <div id="contact" class="col-2">
+            <ContactDetails />
+        </div>
+    </div>
+</section>
+
+<style>
+    #grid-header {
+        display: grid;
+        /* align-items: center; */
+        /* vertical-align: text-bottom; */
+        /* align-content: space-around; */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        grid-template-areas:
+        "a b b"
+        "a c c"
+        "d d d";
+    }
+    #portrait {
+        grid-area: a;
+        border-radius: 15px !important;
+        overflow: hidden;
+        width: 100%;
+        box-shadow: 0px 0px 10px var(--module-shadow);
+    }
+    #greeting {
+        margin-left: 20px;
+        height: 100%;
+        /* display: grid; */
+        align-content: center;
+        grid-area: b;
+        width: 100%;
+    }
+    #contact {
+        grid-area: c; 
+        align-content: end;
+    }
+    #greeting > div > h2 {
+        font-size: 64px;
+        line-height: 0px;
+        padding: 0px 10px;
+        /* padding-top: 20px; */
+    }
+
+    #greeting  > div > h2 > span {
+        font-size: 45px;
+    }
+
+    #greeting  > div > h2 + h3 {
+        font-size: 40px;
+        line-height: 40px;
+        /* padding-bottom: 40px; */
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    @media (max-width: 1050px) {
+        #grid-header {
+            display: grid;
+            /* align-items: center; */
+            /* vertical-align: text-bottom; */
+            /* align-content: space-around; */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            grid-template-areas:
+            "a b b"
+            "d d d";
+        }
+        #contact {
+            /* margin-top: 20px; */
+            grid-area: d; 
+            align-content: end;
+        }
+        #greeting {
+            grid-area: b; 
+        }
+    }
+    @media (max-width: 900px) {
+        #greeting > div > h2 {
+            font-size: 50px;
+        }
+
+        #greeting  > div > h2 > span {
+            font-size: 32px;
+        }
+
+        #greeting > div > h2 + h3 {
+            font-size: 28px;
+            line-height: 28px;
+        }
+    }
+    @media (max-width: 700px) {
+        #greeting {
+            margin-left: 0px;
+        }
+        #greeting > div > h2 {
+            font-size: 38px;
+            line-height: 38px;
+            margin: 0px;
+        }
+
+        #greeting  > div > h2 > span {
+            font-size: 32px;
+        }
+
+        #greeting > div > h2 + h3 {
+            font-size: 22px;
+            line-height: 22px;
+        }
+    }
+</style>
