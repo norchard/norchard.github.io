@@ -1,0 +1,26 @@
+[
+  {
+    "name": "email",
+    "title": "norchard24@gmail.com",
+    "link": "mailto:norchard24@gmail.com",
+    "svg": ""
+  },
+  {
+    "name": "github",
+    "title": "Github",
+    "link": "https://github.com/norchard",
+    "svg": ""
+  },
+  {
+    "name": "linkedin",
+    "title": "LinkedIn",
+    "link": "https://www.linkedin.com/in/nicole-orchard/",
+    "svg": ""
+  },
+  {
+    "name": "resume",
+    "title": "Resume",
+    "link": "#",
+    "svg": ""
+  }
+]
