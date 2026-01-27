@@ -1,0 +1,81 @@
+---
+import ChowChow from '../assets/chowchow.png';
+import { Image } from 'astro:assets';
+---
+<div class="container footer">
+    <div class="tooltip-container">
+        <a href="https://minesweeper-a828.onrender.com/" target="_blank">
+            <Image id="chowchow" src={ ChowChow } alt="chowchow" width="150" />
+            <span id="tooltip">Play a game! 💣</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    .footer {
+        text-align: center;
+        padding: 50px;
+    }
+
+    .tooltip-container {
+        position: relative; /* Needed to position the tooltip text */
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    #tooltip {
+        visibility: hidden; /* Hide the tooltip by default */
+        background-color: var(--accent);
+        color: #fff;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 6px;
+        /* Position the tooltip */
+        position: fixed;
+        z-index: 10;
+        /* transform: translateX(-50%); */
+        transform: translate(-90%, -70%);
+        white-space: nowrap; /* Prevents text wrap */
+        opacity: 0;
+        /* transition: opacity 0.3s; */
+        pointer-events: none; 
+    }
+
+    /* Show the tooltip text when you hover over the container */
+    .tooltip-container:hover #tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+
+<script>
+    const chow = document.getElementById('chowchow');
+    const tooltip = document.getElementById('tooltip');
+    
+    // chow!.addEventListener('mouseover', (event) => {
+    //     document.addEventListener('mousemove', (event) => {
+    //         // event.pageX and event.pageY provide coordinates relative to the document
+    //         tooltip!.style.left = event.pageX + 'px';
+    //         tooltip!.style.top = event.pageY + 'px';
+    //     });
+    // })
+
+    // 1. Show the tooltip on mouse enter
+    chow!.addEventListener('mouseenter', () => {
+        tooltip!.style.display = 'block';
+    });
+
+    // 2. Hide the tooltip on mouse leave
+    chow!.addEventListener('mouseleave', () => {
+        tooltip!.style.display = 'none';
+    });
+
+    // 3. Update the tooltip position on mouse move
+    chow!.addEventListener('mousemove', (event) => {
+        // Position the tooltip relative to the viewport
+        // Use clientX and clientY for coordinates within the viewport
+        tooltip!.style.left = event.clientX + 'px';
+        tooltip!.style.top = event.clientY + 'px';
+    });
+
+</script>

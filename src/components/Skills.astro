@@ -1,0 +1,95 @@
+---
+import skills from '../assets/data/skills.json';
+const svgs = import.meta.glob<ImageMetadata>('../assets/skills/*.svg', { query: '?raw', import: 'default', eager: true });
+---
+
+<div class="container">
+    <h4>Skills</h4>
+    <div id="skills">
+        { skills.map((skill, i) => (
+            <div id={ skill } class={`skill ${ (i === 6) && 'offset-desktop' } ${ (i === 4 ) && 'offset-tablet' } ${ (i === 7 ) && 'newline-tablet' } ${ (i === 9 ) && 'offset-mobile' }`} >
+                <Fragment set:html={svgs[`../assets/skills/${ skill }.svg`]} />
+                <h5>{ skill.split('-').join(' ').toUpperCase() }</h5>
+            </div>
+        )) }
+    </div>
+</div>
+
+<style>
+    #skills {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .skill {
+        grid-column: span 2;
+        display: grid;
+        align-content: space-between;
+        justify-items: center;
+        text-align: center;
+    }
+    
+    .offset-desktop {
+        grid-column: 2 / span 2;
+    }
+
+    .skill svg {
+        height: auto;
+        display: block;
+        text-align: center;
+        transform: scale(0.4);
+        transform-origin: center;
+    }
+
+    .skill h5 {
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+    @media (max-width: 800px) {
+        #skills {
+            grid-template-columns: repeat(8, 1fr);
+            gap: 0px;
+            max-width: 700px;
+        }
+
+        .offset-desktop {
+            grid-column: span 2;
+        }
+
+        .offset-tablet {
+            grid-column: 2 / span 2;
+        }
+
+        .newline-tablet {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    @media (max-width: 550px) {
+        #skills {
+            grid-template-columns: repeat(6, 1fr);
+=        }
+ 
+        .offset-tablet {
+            grid-column: span 2;
+        }
+
+        .newline-tablet {
+            grid-column: span 2;
+        }
+
+        .offset-mobile {
+            grid-column: 2 / span 2;
+        }
+
+        .skill h5 {
+            font-size: 12px !important;
+        }
+    }
+</style>

@@ -18,7 +18,7 @@ A compiler is just a program that translates other programs. Traditional compile
 
 Traditional compiler design comprises three parts:
 
-<Image src={compiler1} alt="A description of my image" width={650} />
+<img src={compiler1.src} alt="Compiler parts" />
 
 - **The Frontend** translates source code into an intermediate representation (IR)\*. [`clang`](http://clang.llvm.org/) is LLVM's frontend for the C family of languages.
 - **The Optimizer** analyzes the IR and translates it into a more efficient form. [`opt`](http://llvm.org/docs/CommandGuide/opt.html) is the LLVM optimizer tool.
@@ -32,15 +32,15 @@ Below is a simple C program that prints "Hello, Compiler!" to stdout. The C synt
 
 (You can imagine the program waving to the compiler as it moves through the compilation process.)
 
-```C
+```c
 // compile_me.c
 // Wave to the compiler. The world can wait.
 
 #include <stdio.h>
 
 int main() {
-printf("Hello, Compiler!\n");
-return 0;
+  printf("Hello, Compiler!\n");
+  return 0;
 }
 ```
 
@@ -52,7 +52,7 @@ As I mentioned above, `clang` is LLVM's frontend for the C family of languages. 
 
   _See the output of the preprocessor step by running:_
 
-```
+```shell
 clang -E compile_me.c -o preprocessed.i
 ```
 
@@ -74,13 +74,13 @@ clang -E compile_me.c -o preprocessed.i
 
   _Run the clang frontend on compile_me.c to generate LLVM IR:_
 
-  ```
+  ```sh
   clang -S -emit-llvm -o llvm_ir.ll compile_me.c
   ```
 
   _The main function in llvm_ir.ll_
 
-```llvm_ir
+```llvm
   ; llvm_ir.ll
 
 @.str = private unnamed_addr constant [18 x i8] c"Hello, Compiler!\0A\00", align 1
@@ -217,19 +217,3 @@ This program is x86 assembly language, which is the human readable syntax for th
 
 1. [Engineering a compiler](https://www.amazon.com/Engineering-Compiler-Second-Keith-Cooper/dp/012088478X)
 2. [Getting Started with LLVM Core Libraries](https://www.amazon.com/Getting-Started-LLVM-Core-Libraries/dp/1782166920)
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```

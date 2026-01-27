@@ -1,0 +1,47 @@
+[
+  {
+    "category": "experience",
+    "title": "Web & Email Developer",
+    "date": "March 2024 - Current",
+    "description": "Created tooling to simplify the email development process, built custom landing pages, and automated flows to manage audience segmentation.",
+    "link": "https://www.loveadv.com",
+    "company": "love-advertising",
+    "svg": ""
+  },
+  {
+    "category": "experience",
+    "title": "Software Engineer",
+    "date": "November 2017 - May 2019",
+    "description": "Built map tile API endpoints, restructured legacy libraries into components, and ensured SLAs were met by monitoring AWS infrastructure.",
+    "link": "https://www.mapbox.com",
+    "company": "mapbox",
+    "svg": ""
+  },
+  {
+    "category": "experience",
+    "title": "Web Designer",
+    "date": "June 2015 - September 2016",
+    "description": "Designed visually compelling, accessible websites aligning with brand goals and business needs. Collaborated with developers on builds and Q/A.",
+    "link": "https://www.divisionof.com",
+    "company": "division-of",
+    "svg": ""
+  },
+  {
+    "category": "education",
+    "title": "Programming Retreat",
+    "date": "September 2016 - July 2017",
+    "description": "Took Harvard's CS50 course, completed the hardware part of the Nand2Tetris course, and built a web application to visualize temporary public art in NYC on a map using D3.js and Mapbox.",
+    "link": "https://www.recurse.com",
+    "company": "recurse-center",
+    "svg": ""
+  },
+  {
+    "category": "education",
+    "title": "Bachelor of Arts",
+    "date": "August 2007 - May 2012",
+    "description": "Focus in History and Studio Art.",
+    "link": "https://www.rice.edu",
+    "company": "rice-university",
+    "svg": ""
+  }
+]
