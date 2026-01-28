@@ -1,26 +1,22 @@
 ---
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 ---
 
 <div class="container">
     <h4>Writing</h4>
-    <section class="module post">
-        <a href="./blog/compilers">
-            <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
-            </svg>
-            <h3>An Intro to Compilers</h3>
-            <p>Read my Hacker News #1 featured blog post on compiler basics</p>
-        </a>
-    </section>
-    <section class="module post">
-        <a href="./blog/package-managers">
-            <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
-            </svg>
-            <h3>Package Managers</h3>
-            <p>The logic behind the magic of install</p>
-        </a>
-    </section>
+    { posts.sort((a,b) =>  Date.parse(a.data.date.toString()) - Date.parse(b.data.date.toString()) )
+            .map( post => (
+        <section class="module post">
+            <a href={`/blog/${post.id}/`}>
+                <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
+                </svg>
+                <h3>{ post.data.title }</h3>
+                <p>{ post.data.teaser || post.data.description }</p>
+            </a>
+        </section>
+    ))}
 </div>
 
 <style>

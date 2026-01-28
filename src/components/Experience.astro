@@ -12,7 +12,6 @@ experiences.forEach( (experience, i, array) => {
 const categories = [...new Set(experiences.map(experience => experience.category))]
 ---
 
-
 { categories.map( category => (
     <div class="container">
         <h4>{ category.charAt(0).toUpperCase() + category.slice(1)}</h4>
@@ -34,8 +33,6 @@ const categories = [...new Set(experiences.map(experience => experience.category
         ))}
     </div>
 ))}
-
-
 <!-- <div id="break">
     <svg width="191" height="32" viewBox="0 0 191 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M76.1992 0.0478516L80.1758 27.8896L85.4834 0.0244141L86.4678 0.0361328L91.1572 28.1738L96.8564 0.0185547L97.8408 0.0419922L102.194 28.1729L108.229 0.0136719L109.212 0.0419922L113.565 28.1729L119.6 0.0136719L120.582 0.0380859L125.255 28.873L129.736 15.7344L129.853 15.3955H190.864V16.3955H130.568L125.555 31.0918L124.588 31.0107L120.021 2.82227L113.975 31.0352L112.992 31.0068L108.638 2.87207L102.604 31.0352L101.621 31.0068L97.2803 2.96094L91.6006 31.0293L90.6172 31.0127L85.9414 2.96191L80.5977 31.0244L79.6113 31.001L75.5752 2.75586L72.0889 17.0498L71.9951 17.4316H0V16.4316H71.21L75.2188 0L76.1992 0.0478516Z" fill="currentColor"/>
@@ -89,11 +86,11 @@ const categories = [...new Set(experiences.map(experience => experience.category
 
     @media (max-width: 700px) {
         .experience h3 {
-            margin-top: 50px;
+            margin-top: 70px;
         }
 
         .experience {
-            padding: 20px;
+            padding: 10px 10px 20px 20px;
         }
     }
 

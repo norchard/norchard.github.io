@@ -101,8 +101,12 @@ import NavBar from '../components/NavBar.astro';
 		text-transform: uppercase;
 		font-weight: 700;
 		letter-spacing: .3em;
-		opacity: .3;
+		color: #aaaaaa;
 		margin-left: 30px;
+	}
+
+	.dark div > h4 {
+		color: #555555;
 	}
 
 	a {
@@ -146,6 +150,33 @@ import NavBar from '../components/NavBar.astro';
         transition-delay: 0.2s;
         transform: scale(1);
     }
+
+	::selection {
+		background-color: #d4a15b; /* Changes the highlight background to red */
+		color: #efd3b7;           /* Changes the selected text color to white */
+	}
+
+	::selection {
+		background-color: #d4d8de; /* Changes the highlight background to red */
+		color: #27a12d;           /* Changes the selected text color to white */
+	}
+
+	/* For compatibility with older Firefox versions */
+	::-moz-selection {
+		background-color: #d4a15b;
+		color: #efd3b7;
+	}
+
+	.dark ::selection {
+		background-color: #778da9; /* Changes the highlight background to red */
+		color: #046509;           /* Changes the selected text color to white */
+	}
+
+	/* For compatibility with older Firefox versions */
+	.dark ::-moz-selection {
+		background-color: #778da9;
+		color: #046509;
+	}
 
 	.blog-post a {
         color: inherit;
@@ -195,6 +226,10 @@ import NavBar from '../components/NavBar.astro';
 		h5 {
 			font-size: 14px !important;
 			padding-bottom: 15px;
+		}
+
+		div > h4 {
+			margin-left: 10px;
 		}
 	}
 </style>
