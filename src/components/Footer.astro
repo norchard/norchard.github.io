@@ -4,10 +4,10 @@ import { Image } from 'astro:assets';
 ---
 <div class="container footer">
     <div class="tooltip-container">
-        <a href="https://minesweeper-a828.onrender.com/" target="_blank">
+        <!-- <a href="https://minesweeper-a828.onrender.com/" target="_blank"> -->
             <Image id="chowchow" src={ ChowChow } alt="chowchow" width="150" />
-            <span id="tooltip">Play a game! 💣</span>
-        </a>
+            <!-- <span id="tooltip">Play a game! 💣</span> -->
+        <!-- </a> -->
     </div>
 </div>
 
@@ -20,7 +20,7 @@ import { Image } from 'astro:assets';
     .tooltip-container {
         position: relative; /* Needed to position the tooltip text */
         display: inline-block;
-        cursor: pointer;
+        /* cursor: pointer; */
     }
 
     #tooltip {
@@ -51,14 +51,6 @@ import { Image } from 'astro:assets';
 <script>
     const chow = document.getElementById('chowchow');
     const tooltip = document.getElementById('tooltip');
-    
-    // chow!.addEventListener('mouseover', (event) => {
-    //     document.addEventListener('mousemove', (event) => {
-    //         // event.pageX and event.pageY provide coordinates relative to the document
-    //         tooltip!.style.left = event.pageX + 'px';
-    //         tooltip!.style.top = event.pageY + 'px';
-    //     });
-    // })
 
     // 1. Show the tooltip on mouse enter
     chow!.addEventListener('mouseenter', () => {
@@ -77,5 +69,4 @@ import { Image } from 'astro:assets';
         tooltip!.style.left = event.clientX + 'px';
         tooltip!.style.top = event.clientY + 'px';
     });
-
 </script>

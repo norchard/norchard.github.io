@@ -9,7 +9,7 @@ import ContactDetails from './ContactDetails.astro';
         <div id="greeting" class="col-2">
             <div>
                 <h2>Hi, I'm Nicole&nbsp;<span>👋</span></h2>
-                <h3>Designer turned Software&nbsp;Engineer</h3>
+                <h3>Designer <span>turned</span> Software&nbsp;Engineer</h3>
             </div>
         </div>
         <div id="contact" class="col-2">
@@ -54,6 +54,8 @@ import ContactDetails from './ContactDetails.astro';
         font-size: 64px;
         line-height: 0px;
         padding: 0px 10px;
+        /* font-family: "swear-display", serif; */
+
         /* padding-top: 20px; */
     }
 
@@ -67,6 +69,14 @@ import ContactDetails from './ContactDetails.astro';
         /* padding-bottom: 40px; */
         padding-left: 10px;
         padding-right: 20px;
+        font-family: "swear-display", serif;
+        /* color: var(--gray); */
+    }
+
+    #greeting  > div > h2 + h3 > span {
+        font-style: italic;
+        font-weight: 300;
+        /* color: var(--accent); */
     }
     @media (max-width: 1050px) {
         #grid-header {

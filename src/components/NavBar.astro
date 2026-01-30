@@ -3,7 +3,8 @@
 ---
 <section class="container">
     <div id="top-bar">
-        <h1 id="name" class="col-1"><a href="/">Nicole Orchard</a></h1>
+        <h1 id="name" class="title col-1"><a href="/">Nicole Orchard</a></h1>
+        <h1 id="clone" class="title col-1"><a href="/">Nicole Orchard</a></h1>
         <div id='tattoo' class='col-1'>
             <div id='sun'></div>
             <div id='moon'></div>
@@ -17,19 +18,34 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         margin: 30px 0px;
+        align-items: center;
         --tattoo-size: 40px;
+    }
+    #name {
+        z-index: 10;
+    }
+    #clone {
+        position: absolute;
+        margin-bottom: 16px;
+        color: var(--accent);
+        /* opacity: 0; */
     }
     #tattoo {
         width: fit-content;
         justify-self: flex-end;
         margin-right: 10px;
     }
-    #name {
+    /* #name {
+        font-size: 24px;
+        font-weight: 700;
+        padding-left: 10px;
+    } */
+    .title {
         font-size: 24px;
         font-weight: 700;
         padding-left: 10px;
     }
-    #name a {
+    .title a {
         color: inherit;
         text-decoration: none;
         font-weight: 600;
@@ -79,8 +95,11 @@
     }
     
     @media (max-width: 700px) {
-        #name {
-            font-size: 16px;
+        .title {
+            font-size: 12px;
+        }
+        #clone {
+            margin-bottom: 8px;
         }
         .container:has(#top-bar){
             margin-top: 10px !important;
@@ -103,4 +122,56 @@
 
     document.querySelector('#sun')!.addEventListener('click', tattooClick);
     document.querySelector('#moon')!.addEventListener('click', tattooClick);
+
+    import { gsap } from "gsap";
+    import { SplitText } from "gsap/SplitText";
+
+    gsap.registerPlugin(SplitText);
+    let split1 = SplitText.create("#name a", { type: "chars" });
+    let split2 = SplitText.create("#clone a", { type: "chars" });
+
+    const home = document.querySelector('#name > a');
+
+
+    // 2. Create the animation timeline in a paused state
+    const hoverTimeline1 = gsap.timeline({ paused: true });
+    const hoverTimeline2 = gsap.timeline({ paused: true });
+
+
+    // 3. Define the animation tweens
+    hoverTimeline1.to(split1.chars, {
+        duration: 0.2, 
+        y: 10,       // animate from 100px below
+        x: 5,
+        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+        stagger: 0.05, // 0.05 seconds between each
+        rotate: 120,
+        ease: 'power1.inOut',
+    });
+
+    hoverTimeline2.from(split2.chars, {
+        duration: 0.2, 
+        y: -10,       // animate from 100px below
+        x: -5,
+        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+        stagger: 0.05, // 0.05 seconds between each
+        rotate: -120,
+        ease: 'power1.inOut',
+    });
+
+    window.onload = function() {
+        // Wait a short time before adding the actual mouseover event listener
+        setTimeout(() => {
+            home?.addEventListener("mouseover", (e) => {
+                hoverTimeline1.play();
+                hoverTimeline2.play();
+            });
+
+            home?.addEventListener("mouseleave", (e) => {
+                hoverTimeline1.reverse();
+                hoverTimeline2.reverse();
+            });
+        }, 100); // 100 milliseconds delay
+    };
+    
 </script>

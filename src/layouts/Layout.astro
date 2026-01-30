@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="stylesheet" href="/prism-styles.css" />
+		<link rel="stylesheet" href="https://use.typekit.net/iom0qcu.css">
 		<meta name="generator" content={Astro.generator} />
 		<title>Nicole Orchard</title>
 		<script is:inline>
@@ -35,6 +36,21 @@ import NavBar from '../components/NavBar.astro';
 </html>
 
 <style is:global>
+	@font-face {
+		font-family: 'Canela';
+		src: url('/fonts/Canela-Medium-Trial.oft') format('oft');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Canela';
+		src: url('/fonts/Canela-MediumItalic-Trial.oft') format('oft');
+		font-weight: 500;
+		font-style: italic;
+		font-display: swap;
+	}
+
 	:root {
 		--bg: #ede6e6;
 		--text: #2A2C34;
@@ -42,6 +58,7 @@ import NavBar from '../components/NavBar.astro';
 		--accent-tint: color-mix(in srgb, black 20%, var(--accent));
 		--module-border: #ececec;
 		--module-shadow: hsl(0, 0%, 84%);
+		--gray: #8e919f;
 	}
 
 	body.dark {
@@ -50,6 +67,7 @@ import NavBar from '../components/NavBar.astro';
 		--accent-tint: color-mix(in srgb, rgb(212, 212, 212) 50%, var(--accent));
 		--module-border: #282a36;
 		--module-shadow: hsl(0, 0%, 4%);
+		--gray: #74767e;
 	}
 
 	.grid-container {
@@ -89,7 +107,7 @@ import NavBar from '../components/NavBar.astro';
 	body {
 		background-color: var(--bg);
 		color: var(--text);
-		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		font-family: polymath, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		margin: 10px;
 	}
 
@@ -101,12 +119,8 @@ import NavBar from '../components/NavBar.astro';
 		text-transform: uppercase;
 		font-weight: 700;
 		letter-spacing: .3em;
-		color: #aaaaaa;
+		color: var(--gray);
 		margin-left: 30px;
-	}
-
-	.dark div > h4 {
-		color: #555555;
 	}
 
 	a {

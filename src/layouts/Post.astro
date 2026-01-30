@@ -16,10 +16,19 @@ const { frontmatter } = Astro.props;
         max-width: 650px;
         font-size: 16px;
         line-height: 24px;
+        padding-bottom: 100px;
     }
 
     .blog-post.container > h1 {
         font-size: 52px;
+        font-family: "swear-display", serif;
+    }
+
+    .blog-post.container > h2 {
+        font-family: "swear-text", serif;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--accent);
     }
 
     pre {
