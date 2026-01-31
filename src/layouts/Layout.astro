@@ -31,12 +31,14 @@ import NavBar from '../components/NavBar.astro';
 	</head>
 	<body>
 		<NavBar />
+		<!-- <div id="dot"></div>
+		<div id="rainbow"><div></div></div> -->
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-	@font-face {
+	/* @font-face {
 		font-family: 'Canela';
 		src: url('/fonts/Canela-Medium-Trial.oft') format('oft');
 		font-weight: 500;
@@ -49,7 +51,7 @@ import NavBar from '../components/NavBar.astro';
 		font-weight: 500;
 		font-style: italic;
 		font-display: swap;
-	}
+	} */
 
 	:root {
 		--bg: #ede6e6;
@@ -59,6 +61,38 @@ import NavBar from '../components/NavBar.astro';
 		--module-border: #ececec;
 		--module-shadow: hsl(0, 0%, 84%);
 		--gray: #8e919f;
+		--hut: #d5c8c8;
+	}
+
+	#dot {
+		width: 14px;
+		height: 8px;
+		border-radius: 8px;
+		background-color: #2A2C34; 
+		opacity: .5px;
+		position: fixed;
+		bottom: 1px;
+		left: 2px;
+		z-index: 101;
+	}
+
+	#rainbow {
+        width: 100vw;
+        height: 11px;
+		position: fixed;
+		bottom: 0px;
+		z-index: 100;
+    }
+
+	#rainbow > div {
+		background-image: linear-gradient(0.25turn, #e38170, #cfc956, #5ba67e, #3b72b9, #6a24af, #f31977);
+		position: relative;
+		height: 100%;
+		width: 100%;
+	}
+
+	p {
+		font-size: 18px;
 	}
 
 	body.dark {
@@ -68,6 +102,7 @@ import NavBar from '../components/NavBar.astro';
 		--module-border: #282a36;
 		--module-shadow: hsl(0, 0%, 4%);
 		--gray: #74767e;
+		--hut: #070707;
 	}
 
 	.grid-container {
@@ -108,12 +143,13 @@ import NavBar from '../components/NavBar.astro';
 		background-color: var(--bg);
 		color: var(--text);
 		font-family: polymath, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		margin: 10px;
+		margin: 0px;
+		padding: 0px 10px;
 	}
 
-	h1, h2, h3, h4, h5, h6, p, a {
+	/* h1, h2, h3, h4, h5, h6, p, a {
 		font-weight: 400;
-	}
+	} */
 
 	div > h4 {
 		text-transform: uppercase;
@@ -130,7 +166,8 @@ import NavBar from '../components/NavBar.astro';
 	
 	.container {
 		max-width: 1000px;
-		margin: 50px auto 0px;
+		margin: 0px auto;
+		padding-top: 35px;
 	}
 
 	.module {
@@ -164,56 +201,41 @@ import NavBar from '../components/NavBar.astro';
         transition-delay: 0.2s;
         transform: scale(1);
     }
-
+	
 	::selection {
-		background-color: #d4a15b; /* Changes the highlight background to red */
-		color: #efd3b7;           /* Changes the selected text color to white */
-	}
-
-	::selection {
-		background-color: #d4d8de; /* Changes the highlight background to red */
-		color: #27a12d;           /* Changes the selected text color to white */
+		background-color: #d4d8de;
+		color: #27a12d;
 	}
 
 	/* For compatibility with older Firefox versions */
 	::-moz-selection {
-		background-color: #d4a15b;
+		background-color: #d4d8de;
 		color: #efd3b7;
 	}
 
 	.dark ::selection {
-		background-color: #778da9; /* Changes the highlight background to red */
-		color: #046509;           /* Changes the selected text color to white */
+		background-color: #93a5bb;
+		color: #046509;
 	}
 
 	/* For compatibility with older Firefox versions */
 	.dark ::-moz-selection {
-		background-color: #778da9;
+		background-color: #93a5bb;
 		color: #046509;
 	}
 
 	.blog-post a {
         color: inherit;
         position: relative;
-        text-decoration: none;
-
-        &::after {
-            background-color: currentColor;
-            bottom: -2px;
-            content: '';
-            height: 5%;
-            position: absolute;
-            right: 0;
-            width: 100%;
-        }
-
-        &:hover {
-            color: var(--accent);
-            &::after {
-                background-color: var(--accent);
-            }
-        }
+        text-decoration: underline;
+		text-underline-offset: 0.4em;
     }
+
+	@media (hover: hover) {
+		.blog-post a:hover {
+            color: var(--accent);
+        }
+	}
 
 	.blog-post img {
         max-width: 100% !important;
@@ -247,3 +269,31 @@ import NavBar from '../components/NavBar.astro';
 		}
 	}
 </style>
+
+<script>
+	const height = document.body.scrollHeight + (document.body.clientWidth / 2);
+	const rainbow = document.querySelector('#rainbow > div') as HTMLElement;
+	const dot = document.getElementById('dot') as HTMLElement;
+	rainbow.style.width = `${height}px`;
+	console.log(height);
+	window.addEventListener('scroll', () => {
+		const scrollPosition = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+
+		// Clamp the value between 0 and 1 to prevent issues at the very top/bottom
+		const clampedScroll = Math.min(Math.max(scrollPosition, 0), 1);
+
+		// Map the clamped value to RGB color components
+		// Start: rgb(255, 100, 0) -> End: rgb(0, 200, 255)
+		// const r = 255 - clampedScroll * 255;
+		// const g = 100 + clampedScroll * 100; // From 100 to 200
+		// const b = clampedScroll * 255;
+
+		// Set the CSS variable
+		// document.documentElement.style.setProperty("--accent", `rgb(${r}, ${g}, ${b})`);
+
+		const scrollDistance = window.scrollY;
+		console.log('Scrolled distance:', scrollDistance, 'px');
+		rainbow.style.left = `-${ scrollDistance }px`;
+		dot!.style.left = `${clampedScroll * (document.body.clientWidth - 14)}px`;
+	});
+</script>

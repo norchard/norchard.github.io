@@ -61,10 +61,6 @@
         cursor: pointer;
     }
 
-    #sun:hover{
-        margin-top: -5px;
-    }
-
     #moon {
         box-sizing: border-box;
         border: solid 4px #d4d4d4;
@@ -77,8 +73,13 @@
         cursor: pointer;
     }
 
-    #moon:hover{
-        margin-top: -5px;
+    @media (hover: hover) {
+        #sun:hover{
+            margin-top: -5px;
+        }
+        #moon:hover{
+            margin-top: -5px;
+        }
     }
 
     #night {
@@ -96,13 +97,14 @@
     
     @media (max-width: 700px) {
         .title {
-            font-size: 12px;
+            font-size: 18px;
         }
         #clone {
             margin-bottom: 8px;
         }
         .container:has(#top-bar){
             margin-top: 10px !important;
+            padding-top: 0px;
         }
         #top-bar {
             --tattoo-size: 30px;
@@ -159,19 +161,21 @@
         ease: 'power1.inOut',
     });
 
-    window.onload = function() {
-        // Wait a short time before adding the actual mouseover event listener
-        setTimeout(() => {
-            home?.addEventListener("mouseover", (e) => {
-                hoverTimeline1.play();
-                hoverTimeline2.play();
-            });
+    if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+        window.addEventListener('load', () => {
+            // Wait a short time before adding the actual mouseover event listener
+            setTimeout(() => {
+                home?.addEventListener("mouseover", (e) => {
+                    hoverTimeline1.play();
+                    hoverTimeline2.play();
+                });
 
-            home?.addEventListener("mouseleave", (e) => {
-                hoverTimeline1.reverse();
-                hoverTimeline2.reverse();
-            });
-        }, 100); // 100 milliseconds delay
-    };
+                home?.addEventListener("mouseleave", (e) => {
+                    hoverTimeline1.reverse();
+                    hoverTimeline2.reverse();
+                });
+            }, 100); // 100 milliseconds delay
+        });
+    }
     
 </script>

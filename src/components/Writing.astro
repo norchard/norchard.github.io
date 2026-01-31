@@ -7,46 +7,70 @@ const posts = await getCollection("blog");
     <h4>Writing</h4>
     { posts.sort((a,b) =>  Date.parse(a.data.date.toString()) - Date.parse(b.data.date.toString()) )
             .map( post => (
-        <section class="module post">
             <a href={`/blog/${post.id}/`}>
-                <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
-                </svg>
-                <h3>{ post.data.title }</h3>
-                <p>{ post.data.teaser || post.data.description }</p>
+                <section class="module post">
+                        <svg width="19" height="31" viewBox="0 0 19 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M0 15.1205V0L18.7241 15.1205L0 30.241V15.1205Z"/>
+                        </svg>
+                        <h3>{ post.data.title }</h3>
+                        <p>{ post.data.teaser || post.data.description }</p>
+                </section>
             </a>
-        </section>
+
     ))}
 </div>
 
 <style>
     .post {
-        padding: 20px;
-        transition: transform .4s ease-in-out;
+        padding: 25px 15px;
+        transition: transform .4s ease-in-out, box-shadow .4s ease-in-out;
         margin-bottom: 20px;
-    }
-    .post a {
 		display: flex;
-        /* vertical-align: end; */
         align-items: end;
-
-        /* padding: 10px; */
 	}
 
 	.post svg {
         margin-left: 20px;
 		color: var(--accent);
 		text-decoration: none;
+        transition: transform .4s ease-in-out;
 	}
 
-    .post:has(a:hover) {
-        transform: scale(1.01);
-        box-shadow: 0px 3px 20px var(--module-shadow);
-        transition: transform .4s ease-in-out,  box-shadow .4s ease-in-out;
-        /* background-color: black !important;
-        background-image: none; */
-        /* color: var(--accent); */
+    .post h3 {
+        color: inherit;
+        position: relative;
+        text-decoration: none;
+        padding-bottom: 3px;
+        font-weight: 400;
+
+        &::after {
+            background-color: currentColor;
+            bottom: -2px;
+            content: '';
+            height: 1.5px;
+            margin-top: 5px;
+            position: absolute;
+            left: 0;
+            width: 0%;
+            transition: width .5s ease-in-out;
+        }
     }
+
+    @media (hover: hover) {
+        .post:hover {
+            transform: scale(1.01);
+            box-shadow: 0px 3px 20px var(--module-shadow);
+            transition: transform .4s ease-in-out,  box-shadow .4s ease-in-out;
+            /* background-color: black !important;
+            background-image: none; */
+            /* color: var(--accent); */
+        }
+        
+        .post:hover h3::after {
+            width: 100%;
+        }
+    }
+
 
     /* .post:has(a:hover) > a > svg {
         transform: rotate(360deg);
@@ -63,11 +87,12 @@ const posts = await getCollection("blog");
 	}
 
     .post p {
-        margin-bottom: 0px;
+        margin: 0px;
         color: var(--accent);
         font-family: "swear-text", serif;
         font-weight: 600;
         font-style: italic;
+        padding-bottom: 3px;
     }
 
     @media (max-width: 1050px) {
@@ -78,6 +103,9 @@ const posts = await getCollection("blog");
     @media (max-width: 900px) {
         .post p {
             display: none;
+        }
+        .post h3 {
+            font-weight: 700;
         }
     }
 </style>

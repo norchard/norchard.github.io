@@ -31,6 +31,7 @@ import ContactDetails from './ContactDetails.astro';
         "a c c"
         "d d d";
     }
+    
     #portrait {
         grid-area: a;
         border-radius: 15px !important;
@@ -54,6 +55,7 @@ import ContactDetails from './ContactDetails.astro';
         font-size: 64px;
         line-height: 0px;
         padding: 0px 10px;
+        font-weight: 400;
         /* font-family: "swear-display", serif; */
 
         /* padding-top: 20px; */
@@ -70,12 +72,13 @@ import ContactDetails from './ContactDetails.astro';
         padding-left: 10px;
         padding-right: 20px;
         font-family: "swear-display", serif;
+        font-weight: 400;
         /* color: var(--gray); */
     }
 
     #greeting  > div > h2 + h3 > span {
         font-style: italic;
-        font-weight: 300;
+        font-weight: 400;
         /* color: var(--accent); */
     }
     @media (max-width: 1050px) {
@@ -131,6 +134,7 @@ import ContactDetails from './ContactDetails.astro';
         #greeting > div > h2 + h3 {
             font-size: 22px;
             line-height: 26px;
+            font-weight: 700;
         }
     }
 </style>

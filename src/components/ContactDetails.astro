@@ -38,12 +38,15 @@ const svgs = import.meta.glob<ImageMetadata>('../assets/contact/*.svg', { query:
         font-size: 16px;
         line-height: 29px;
         margin: 0px 0px 0px 10px;
+        font-weight: 500;
     }
 
-    .detail:hover {
-        color: #ffffff;
-        background-color: var(--accent);
-        /* border: 2px solid var(--module-border); */
+    @media (hover: hover) {
+        .detail:hover {
+            color: #ffffff;
+            background-color: var(--accent);
+            /* border: 2px solid var(--module-border); */
+        }
     }
 
     @media (max-width: 700px) {
