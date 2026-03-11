@@ -4,8 +4,10 @@ import ContactDetails from './ContactDetails.astro';
 ---
 
 <section class="container">
-    <div id="grid-header">
-        <img id="portrait" class="col-1" src={nicoleImage.src} alt="Nicole Orchard headshot" fetchpriority="high" />
+    <div id="grid-header" class="fade-in">
+        <div id="portrait" class="col-1">
+            <img class="slide-up-image" src={nicoleImage.src} alt="Nicole Orchard headshot" fetchpriority="high" />
+        </div>
         <div id="greeting" class="col-2">
             <div>
                 <h2>Hi, I'm Nicole&nbsp;<span>👋</span></h2>
@@ -26,11 +28,60 @@ import ContactDetails from './ContactDetails.astro';
         /* align-content: space-around; */
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+        transition: transform .5s ease-in-out;
+        transform: translateX(0px);
         grid-template-areas:
         "a b b"
         "a c c"
         "d d d";
     }
+
+    @keyframes handWave {
+        0% { transform: rotate(25deg);}
+        20% { transform: rotate(0deg);}
+        40% { transform: rotate(25deg);}
+        60% { transform: rotate(0deg);}
+        80% { transform: rotate(25deg);}
+        100% { transform: rotate(0deg);}
+    }
+
+    @keyframes slideInLeft {
+        0% { opacity: 0; transform: translateX(50px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInUp {
+        0% { opacity: 0; transform: translateY(50px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Define the animation sequence */
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    .fade-in {
+        animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    .slide-in-left {
+        animation: slideInLeft 1.5s ease-in-out forwards;
+    }
+
+    .slide-in-up {
+        animation: slideInUp 1.5s ease-in-out forwards;
+    }
+
+    /* Define the animation sequence */
+    /* @keyframes slideUpImage {
+        0% { transform: scale(120%); }
+        100% { transform: scale(100%); }
+    } */
+
+    /* .slide-up-image {
+        animation: slideUpImage 1.5s ease-in forwards;
+    } */
     
     #portrait {
         grid-area: a;
@@ -38,6 +89,11 @@ import ContactDetails from './ContactDetails.astro';
         overflow: hidden;
         width: 100%;
         box-shadow: 0px 0px 10px var(--module-shadow);
+		background-image: linear-gradient(color-mix(in srgb, #ffffff 60%, var(--accent)), var(--accent));
+    }
+    #portrait img {
+        width: 100%;
+        height: 100%;
     }
     #greeting {
         margin-left: 20px;
@@ -63,6 +119,8 @@ import ContactDetails from './ContactDetails.astro';
 
     #greeting  > div > h2 > span {
         font-size: 45px;
+        display: inline-block;
+        animation: handWave 4s ease-in-out forwards;
     }
 
     #greeting  > div > h2 + h3 {
@@ -138,3 +196,10 @@ import ContactDetails from './ContactDetails.astro';
         }
     }
 </style>
+
+<!-- <script>
+    const header = document.getElementById('grid-header');
+    document.documentElement.addEventListener('load', () => {
+        header?.classList.remove('slide-left');
+    })
+</script> -->

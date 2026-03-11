@@ -51,8 +51,10 @@ const posts = await getCollection("blog");
             margin-top: 5px;
             position: absolute;
             left: 0;
-            width: 0%;
-            transition: width .5s ease-in-out;
+            transform-origin: left; /* Grow from the left */
+            width: 100%;
+            transform: scaleX(0);
+            transition: width .5s ease-in-out, transform .5s ease-in-out;
         }
     }
 
@@ -61,13 +63,20 @@ const posts = await getCollection("blog");
             transform: scale(1.01);
             box-shadow: 0px 3px 20px var(--module-shadow);
             transition: transform .4s ease-in-out,  box-shadow .4s ease-in-out;
+
             /* background-color: black !important;
             background-image: none; */
             /* color: var(--accent); */
         }
         
         .post:hover h3::after {
-            width: 100%;
+            transform: scaleX(1);
+        }
+    }
+
+    .right {
+        &::after {
+            right: 0 !important;
         }
     }
 
@@ -109,3 +118,15 @@ const posts = await getCollection("blog");
         }
     }
 </style>
+
+<!-- 
+<script>
+
+    const posts = document.getElementsByClassName('.post h3');
+    for (const post of posts) {
+        post.addEventListener('mouseout', (e) => {
+            (post as HTMLElement).classList.toggle('right');
+        })
+    }
+    
+</script> -->

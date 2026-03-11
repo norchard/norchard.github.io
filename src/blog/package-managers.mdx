@@ -6,7 +6,7 @@ date: 2017-22-06
 
 If you want to draw for the first time, someone might hand you a piece of paper and a pencil. They won't spend time discussing where the paper and pencil came from. Instead, they'll tell you about line, form, and negative space. If you want to write a Python program for the first time, someone might run the following commands on your machine:
 
-```
+```sh
 $ apt install python3
 $ pip3 install ipython
 ```
@@ -31,13 +31,13 @@ There are essentially two types of package managers:
 
 When I needed to install Ruby to run a script on my VM, I used `aptitude` to search for a Ruby package.
 
-```
+```sh
 $ aptitude search ruby
 ```
 
 My search returned a long list of .deb packages containing the word 'ruby'. Where did this list come from? A file called `/etc/apt/sources.list` shows the source endpoint for both `deb` packages, which are binary files, and `deb-src` packages, which are source files.
 
-```small
+```
 deb http://mirrors.digitalocean.com/ubuntu/ xenial main restricted
 deb-src http://mirrors.digitalocean.com/ubuntu/ xenial main restricted
 ```
@@ -48,14 +48,14 @@ My VM is a DigitalOcean Droplet, so the source url is an Ubuntu mirror hosted by
 
 In order to install the latest version of Ruby (2.3) I could run either of two commands:
 
-```
+```sh
 $ aptitude install ruby2.3
 $ aptitude install ruby
 ```
 
 I chose to run the second because it installs the default version of Ruby, which is currently 2.3, but could change in the future. Upon running the install command I received this prompt:
 
-```small
+```
 root@ubuntu:~# aptitude install ruby
 The following NEW packages will be installed:
   fonts-lato{a} javascript-common{a} libjs-jquery{a} libruby2.3{a}
@@ -72,7 +72,7 @@ Those are Ruby's dependencies! Some of them seem like nonsense. I'm not sure why
 
 Once the install completes, the Ruby binary file is located in `/usr/bin`. If you run `echo $PATH` you can see the search path that is traversed when you run a program from the command line. Mine is the default for Ubuntu:
 
-```
+```sh
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 
@@ -105,7 +105,7 @@ Most package managers have pretty similar command-line interfaces, including `se
 
 When you run `aptitude -h` the output will also tell you, following a list of valid usage, actions, and options, that aptitude "does not have Super Cow Powers".
 
-```small
+```
 Actions:
 install   - Install/upgrade packages.
 remove    - Remove packages.
@@ -118,7 +118,7 @@ This aptitude does not have Super Cow Powers.
 
 `apt` _does_ have super cow powers:
 
-```
+```sh
 root@ubuntu:~# apt moo
                  (__)
                  (oo)

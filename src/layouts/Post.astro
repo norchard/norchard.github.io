@@ -1,10 +1,14 @@
 ---
 import Layout from './Layout.astro';
 const { frontmatter } = Astro.props;
+const { slug } = Astro.params; 
+
+import { Prism } from '@astrojs/prism';
+import 'prismjs/components/prism-llvm'; 
 ---
 
 <Layout>
-    <div class='container blog-post'>
+    <div class=`container blog-post post-${slug}`>
         <h1>{ frontmatter.title }</h1>
         <h2>{ frontmatter.description }</h2>
         <slot />

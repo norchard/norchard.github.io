@@ -82,7 +82,7 @@ clang -E compile_me.c -o preprocessed.i
   _The main function in llvm_ir.ll_
 
 ```llvm
-  ; llvm_ir.ll
+; llvm_ir.ll
 
 @.str = private unnamed_addr constant [18 x i8] c"Hello, Compiler!\0A\00", align 1
 
@@ -102,15 +102,13 @@ The job of the optimizer is to improve code efficiency based on its understandin
 
 Take a look at the difference between the LLVM IR code our frontend generated above and the result of running:
 
-```
-
+```sh
 opt -O2 -S llvm_ir.ll -o optimized.ll
-
 ```
 
 _The main function in optimized.ll_
 
-```llvm_ir
+```llvm
 ; optimized.ll
 
 @str = private unnamed_addr constant [17 x i8] c"Hello, Compiler!\00"
@@ -139,7 +137,7 @@ printf("%i + %i = %i\n", a, b, c);
 
 _Here is the unoptimized LLVM IR:_
 
-```llvm_ir
+```llvm
 @.str = private unnamed_addr constant [14 x i8] c"%i + %i = %i\0A\00", align 1
 
 define i32 @main() {
@@ -164,7 +162,7 @@ declare i32 @printf(i8*, ...)
 
 \*Here is the optimized LLVM IR:\*
 
-```llvm_ir
+```llvm
 @.str = private unnamed_addr constant [14 x i8] c"%i + %i = %i\0A\00", align 1
 
 define i32 @main() {
@@ -189,14 +187,12 @@ LLVM's backend tool is `llc`. It generates machine code from LLVM IR input in th
 
 _Running this command will produce some machine code!_
 
-```
-
+```sh
 llc -o compiled-assembly.s optimized.ll
 
 ```
 
-```
-
+```asm
 \_main:
 pushq %rbp
 movq %rsp, %rbp

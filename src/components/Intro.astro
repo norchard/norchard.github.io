@@ -4,7 +4,7 @@ import background from '../assets/background.svg';
 ---
 
 <div class="container">
-	<p id="intro">
+	<p id="intro" class="slide-in-up">
 		I'm a developer with experience spanning graphic design, web design and development, and software engineering. My background includes designing brand identities and websites as well as building and maintaining web APIs and their underlying cloud infrastructure. I bring a strong visual sensibility paired with technical fluency to my work, whether in an agency setting or at a startup.
 	</p>
 </div>
@@ -18,6 +18,16 @@ import background from '../assets/background.svg';
 		margin: 50px auto;
 		padding: 0px 30px;
 	}
+	
+	@keyframes slideInUp {
+        0% { opacity: 0; transform: translateY(50px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+	.slide-in-up {
+        animation: slideInUp 1.5s ease-in-out forwards;
+    }
+
 	@media (max-width: 700px) {
 		#intro {
 			font-size: 18px;
