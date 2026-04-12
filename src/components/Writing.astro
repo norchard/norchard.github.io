@@ -5,7 +5,8 @@ const posts = await getCollection("blog");
 
 <div class="container">
     <h4>Writing</h4>
-    { posts.sort((a,b) =>  Date.parse(a.data.date.toString()) - Date.parse(b.data.date.toString()) )
+    { posts.filter(post => post.data.status === "published")
+        .sort((a,b) =>  Date.parse(a.data.date.toString()) - Date.parse(b.data.date.toString()) )
             .map( post => (
             <a href={`/blog/${post.id}/`}>
                 <section class="module post">

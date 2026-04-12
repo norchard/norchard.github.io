@@ -1,0 +1,30 @@
+---
+title: Compiling Legacy C Programs
+description: There's a Flag For That
+date: 2026-09-02
+status: "draft"
+---
+
+Today I learned a lot about compiling C on Windows vs Mac helping my Dad debug a compiling error.
+
+Here are a few fun facts before I dig into the meat of the problem:
+
+- `Scoop` is a package manager for Windows which doesn't require having root permissions.
+- Git was originally designed to run at a Unix command line, so when you install it with `Scoop` on Windows it comes with Git Bash, which emulates the Bourne Again Shell - the default Unix shell on Linux and Mac.
+- `GCC` stands for the Gnu Compiler Collection and includes compilers for C, C++, Fortran, Ada, Go, and others.
+- `GCC` on Mac is actually a symlink to `Clang`.
+
+## A Review of C Compilation
+
+- A header file includes the interface declaration for modular libraries to include in your C file (for example, stdio.h has the declaration of printf).
+- At compile time, first the preprocessor replaces include statements with the header code itself. (This is also the stage where macros are expanded and comments are removed).
+- Next, the compiler translates the code into assembly language. This is the stage where code syntax and semantics are checked and errors are thrown.
+- Then at the linking stage of compilation the .so (shared object) file, which has the implementation of your header interface, is linked to the executable.
+
+## Encountering the Multiple Definition Error
+
+The issue that we were running into is that our program included the same header file in multiple C files. If you follow the steps above you'll deduce that by compilation time that means that the same variables are defined multiple time. Defining the same variable multiple times is a semantic error (the error lies in the meaning or context). The issue we were facing was that compiling using Clang on our Mac didn't throw an error and produced a valid and accurate executable. Meanwhile, compiling the same program using GCC on Windows threw many multiple-definition errors.
+
+After some digging on Google, we found that the default behavior of GCC and Clang used to be the behavior that is achieved using the flag -fcommon on either Clang or GCC. With that flag, tentative definitions are created and allocated storage in the common block area of the linker. While convenient, this behavior is considered bad engineering because unintentional bugs introduced by multiple definitions go unnoticed. The default behavior since GCC 10 and Clang 11 (both released in 2020) has been -fno-common, which does not include a common block area in the linker. In order to share code across files the extern keyword is best practice to signify global definitions which can be declared more than once. If the compiler finds the extern keyword at the compilation phase, it takes note that the variable or function exists but it does not allocate memory for it. The -fcommon flag exists primarily to accommodate legacy code which followed the earlier convention (which includes the program we were working with!)
+
+TODO: talka bout common block vs data block
