@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.nicoleorchard.com",
+  site: "https://nicoleorchard.com",
   integrations: [mdx()],
   markdown: {
     shikiConfig: {
