@@ -196,8 +196,19 @@ import ContactDetails from './ContactDetails.astro';
         }
     }
     @media (max-width: 450px) {
+        #grid-header {
+            gap: 10px;
+        }
         #greeting  > div > h2 > span {
             display: none;
+        }
+
+        #greeting  > div > h2 {
+            font-size: 30px;
+        }
+
+        #greeting  > div > h3 {
+            font-size: 18px !important;
         }
     }
 </style>
